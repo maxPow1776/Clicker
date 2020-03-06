@@ -787,8 +787,8 @@ GameObject:
   - component: {fileID: 612826460}
   - component: {fileID: 612826463}
   - component: {fileID: 612826464}
-  - component: {fileID: 612826465}
   - component: {fileID: 612826466}
+  - component: {fileID: 612826465}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -995,6 +995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 4, y: 0}
+  acceleration: 1
 --- !u!114 &612826466
 MonoBehaviour:
   m_ObjectHideFlags: 0

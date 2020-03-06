@@ -8,15 +8,21 @@ public class ConditionCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("Wall"))
+        if (collision.collider.CompareTag("Wall"))
         {
             if (transform.rotation.y == 0)
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             else
                 transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        }
+        else if (collision.collider.CompareTag("Flower"))
+        {
+            Destroy(collision.gameObject);
             score += 1;
             scoreText.text = score.ToString();
-        } else
+        } 
+        else
         {
             Destroy(gameObject);
         }
