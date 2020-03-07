@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ConditionCollision : MonoBehaviour
 {
@@ -21,10 +22,12 @@ public class ConditionCollision : MonoBehaviour
             Destroy(collision.gameObject);
             score += 1;
             scoreText.text = score.ToString();
-        } 
+        }
         else
         {
             Destroy(gameObject);
+            GlobalCount.score = scoreText.text;
+            SceneManager.LoadScene("Respawn");
         }
     }
 }
