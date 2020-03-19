@@ -9,7 +9,7 @@ public class ConditionCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Wall"))
+        if (collision.gameObject.name.Contains("Wall"))
         {
             if (transform.rotation.y == 0)
                 transform.rotation = Quaternion.Euler(0, 180, 0);
@@ -17,7 +17,7 @@ public class ConditionCollision : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 0);
 
         }
-        else if (collision.collider.CompareTag("Flower"))
+        else if (collision.gameObject.name.Contains("Flower"))
         {
             Destroy(collision.gameObject);
             score += 1;
