@@ -6,6 +6,7 @@ public class ConditionCollision : MonoBehaviour
 {
     public Text scoreText;
     private int score = 0;
+    [SerializeField] private GameOver gameOver;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,8 +27,10 @@ public class ConditionCollision : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            GlobalCount.score = scoreText.text;
-            SceneManager.LoadScene("Respawn");
+            //GlobalCount.score = scoreText.text;
+            //SceneManager.LoadScene("Respawn");
+            gameOver.SetScore(score);
+            gameOver.Show();
         }
     }
 }
