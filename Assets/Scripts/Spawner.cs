@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject prefab;
-    public float interval;
-
-    public GameObject from;
-    public GameObject to;
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private float interval;
+    [SerializeField] private GameObject from;
+    [SerializeField] private GameObject to;
 
     private float timer;
 

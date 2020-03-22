@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class AutoMove : MonoBehaviour
 {
-    public Vector2 speed = new Vector2(4f, 0f);
-    public float acceleration;
+    [SerializeField] private Vector2 speed = new Vector2(4f, 0f);
+    [SerializeField] private float acceleration;
 
     private void FixedUpdate()
     {

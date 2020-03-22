@@ -3,12 +3,9 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class Push : MonoBehaviour
 {
-    public KeyCode keyCode = KeyCode.Space;
-
-    public Vector2 Force;
-
-    [HideInInspector]
-    public Rigidbody2D rigidBody2D;
+    [SerializeField] private KeyCode keyCode = KeyCode.Space;
+    [SerializeField] private Vector2 Force;
+    private Rigidbody2D rigidBody2D;
 
 
     private void OnValidate()
