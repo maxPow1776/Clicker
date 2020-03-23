@@ -1,8 +1,8 @@
-/[Ll]ibrary/
-/[Ll]ogs/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uilds/
+/Library
+/Logs
+/Temp
+/obj
+/Builds
 
 *.csproj
 *.unityproj
