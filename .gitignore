@@ -1,8 +1,8 @@
-[Ll]ibrary/
-[Ll]ogs/
-[Tt]emp/
-[Oo]bj/
-[Bb]uilds/
+/[Ll]ibrary/
+/[Ll]ogs/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uilds/
 
 *.csproj
 *.unityproj
@@ -12,5 +12,5 @@
 *.user
 *.userprefs
 
-.vs/
-.idea
+/.vs
+/.idea
