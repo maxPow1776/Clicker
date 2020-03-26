@@ -25,7 +25,6 @@ public class ConditionCollision : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
             gameOver.SetScore(score);
             gameOver.Show();
         }
