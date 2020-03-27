@@ -5,7 +5,7 @@ public class ConditionCollision : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
     [SerializeField] private GameOver gameOver;
-    private int score = 0;
+    public int score = 0;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
