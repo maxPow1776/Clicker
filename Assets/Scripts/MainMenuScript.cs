@@ -12,6 +12,8 @@ public class MainMenuScript : MonoBehaviour
         OnPlayButtonClick();
         _time.SetActive(true);
         _gameOver.GetComponent<GameOver>()._isGameWithTimer = true;
+        _player.GetComponent<AutoMove>().acceleration = 2.5f;
+        _spawner.GetComponent<Spawner>().interval = 0.5f;
     }
 
     public void OnPlayButtonClick()

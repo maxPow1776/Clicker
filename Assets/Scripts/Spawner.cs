@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
-    [SerializeField] private float interval;
+    public float interval = 3;
     [SerializeField] private GameObject from;
     [SerializeField] private GameObject to;
 

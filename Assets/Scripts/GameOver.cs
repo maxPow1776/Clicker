@@ -28,7 +28,6 @@ public class GameOver : MonoBehaviour
         _scoreText.text = "0";
         spawner.SetActive(true);
         _player.transform.position = new Vector3(0, 0, 0);
-        _player.GetComponent<AutoMove>().acceleration = 1;
         _player.GetComponent<ConditionCollision>().score = 0;
         _player.SetActive(true);
 
@@ -41,7 +40,11 @@ public class GameOver : MonoBehaviour
         if (_isGameWithTimer)
         {
             _time.SetActive(true);
-            _time.GetComponent<TimerScript>()._timer = 3600;
+            _time.GetComponent<TimerScript>()._timer = 3000;
+            _player.GetComponent<AutoMove>().acceleration = 2.5f;
+        } else
+        {
+            _player.GetComponent<AutoMove>().acceleration = 1;
         }
     }
 

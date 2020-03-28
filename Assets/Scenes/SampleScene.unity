@@ -3126,7 +3126,7 @@ MonoBehaviour:
   _timeCount: {fileID: 216942565}
   _scoreCount: {fileID: 1560793209}
   _gameOver: {fileID: 1059164972}
-  _timer: 3600
+  _timer: 3000
 --- !u!114 &1641761607
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class TimerScript : MonoBehaviour
     [SerializeField] private Text _timeCount;
     [SerializeField] private Text _scoreCount;
     [SerializeField] private GameOver _gameOver;
-    public int _timer = 3600;
+    public int _timer = 3000;
 
     void Update()
     {
