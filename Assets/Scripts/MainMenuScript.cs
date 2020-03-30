@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] GameObject _spawner;
     [SerializeField] GameObject _time;
     [SerializeField] GameObject _gameOver;
+    [SerializeField] Animator _mainMenuAnimator;
 
     public void OnGameWithATimeLimitButtonClick()
     {
@@ -18,6 +20,14 @@ public class MainMenuScript : MonoBehaviour
 
     public void OnPlayButtonClick()
     {
+        _mainMenuAnimator.SetBool("isOpened", false);
+        StartCoroutine(startGame());
+        
+    }
+
+    IEnumerator startGame()
+    {
+        yield return new WaitForSeconds(1);
         gameObject.SetActive(false);
         _player.SetActive(true);
         _spawner.SetActive(true);

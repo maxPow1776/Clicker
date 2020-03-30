@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class GameOver : MonoBehaviour
     [SerializeField] private GameObject spawner;
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _time;
+    [SerializeField] Animator _gameOverAnimator;
     public bool _isGameWithTimer = false;
 
     public void Show()
@@ -25,6 +27,19 @@ public class GameOver : MonoBehaviour
 
     public void OnRestartButtonClick()
     {
+        _gameOverAnimator.SetBool("isOpened", false);
+        StartCoroutine(RestartButtonClick());
+    }
+
+    public void OnMainMenuButtonClick()
+    {
+        _gameOverAnimator.SetBool("isOpened", false);
+        StartCoroutine(MainMenutButtonClick());
+    }
+
+    IEnumerator RestartButtonClick()
+    {
+        yield return new WaitForSeconds(1);
         _scoreText.text = "0";
         spawner.SetActive(true);
         _player.transform.position = new Vector3(0, 0, 0);
@@ -34,7 +49,7 @@ public class GameOver : MonoBehaviour
         //Вы в прошлый раз говорили, что использование тэгов не очень хорошо. Но я пока не придумал, как сделать по-другому
         GameObject[] flowers = GameObject.FindGameObjectsWithTag("Flower");
 
-        foreach(GameObject flower in flowers)
+        foreach (GameObject flower in flowers)
             Destroy(flower);
         gameObject.SetActive(false);
         if (_isGameWithTimer)
@@ -42,14 +57,16 @@ public class GameOver : MonoBehaviour
             _time.SetActive(true);
             _time.GetComponent<TimerScript>()._timer = 3000;
             _player.GetComponent<AutoMove>().acceleration = 2.5f;
-        } else
+        }
+        else
         {
             _player.GetComponent<AutoMove>().acceleration = 1;
         }
     }
 
-    public void OnMainMenuButtonClick()
+    IEnumerator MainMenutButtonClick()
     {
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 }
