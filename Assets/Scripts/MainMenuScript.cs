@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] GameObject _time;
     [SerializeField] GameObject _gameOver;
     [SerializeField] Animator _mainMenuAnimator;
+    [SerializeField] Text _bestScore;
+
+    private void Start()
+    {
+        _bestScore.text = PlayerPrefs.GetInt("BestScore").ToString();
+    }
 
     public void OnGameWithATimeLimitButtonClick()
     {

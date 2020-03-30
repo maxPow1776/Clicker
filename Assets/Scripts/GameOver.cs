@@ -11,7 +11,17 @@ public class GameOver : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _time;
     [SerializeField] Animator _gameOverAnimator;
+    [SerializeField] Text _bestScore;
     public bool _isGameWithTimer = false;
+
+    private void Start()
+    {
+        if(int.Parse(_scoreText.text) > int.Parse(_bestScore.text))
+        {
+            _bestScore.text = _scoreText.text;
+            PlayerPrefs.SetInt("BestScore", int.Parse(_bestScore.text));
+        }
+    }
 
     public void Show()
     {
