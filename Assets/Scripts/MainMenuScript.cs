@@ -4,16 +4,18 @@ using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour
 {
-    [SerializeField] GameObject _player;
-    [SerializeField] GameObject _spawner;
-    [SerializeField] GameObject _time;
-    [SerializeField] GameObject _gameOver;
-    [SerializeField] Animator _mainMenuAnimator;
-    [SerializeField] Text _bestScore;
+    [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _spawner;
+    [SerializeField] private GameObject _time;
+    [SerializeField] private GameObject _gameOver;
+    [SerializeField] private Animator _mainMenuAnimator;
+    [SerializeField] private Text _bestScore;
+    [SerializeField] private Text _bestTimeLimitedScore;
 
     private void Start()
     {
         _bestScore.text = PlayerPrefs.GetInt("BestScore").ToString();
+        _bestTimeLimitedScore.text = PlayerPrefs.GetInt("BestTimeLimitedScore").ToString();
     }
 
     public void OnGameWithATimeLimitButtonClick()

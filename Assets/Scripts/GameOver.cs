@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,23 +12,27 @@ public class GameOver : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _time;
     [SerializeField] Animator _gameOverAnimator;
-    [SerializeField] Text _bestScore;
+    [SerializeField] private Text _bestScore;
     public bool _isGameWithTimer = false;
-
-    private void Start()
-    {
-        if(int.Parse(_scoreText.text) > int.Parse(_bestScore.text))
-        {
-            _bestScore.text = _scoreText.text;
-            PlayerPrefs.SetInt("BestScore", int.Parse(_bestScore.text));
-        }
-    }
 
     public void Show()
     {
         _player.SetActive(false);
         spawner.SetActive(false);
         gameObject.SetActive(true);
+
+        if (_isGameWithTimer)
+            _bestScore.text = PlayerPrefs.GetInt("BestTimeLimitedScore").ToString();
+        else
+            _bestScore.text = PlayerPrefs.GetInt("BestScore").ToString();
+        if (Convert.ToInt32(_finalScoreText.text) > Convert.ToInt32(_bestScore.text))
+        {
+            _bestScore.text = _finalScoreText.text;
+        }
+        if (_isGameWithTimer)
+            PlayerPrefs.SetInt("BestTimeLimitedScore", Convert.ToInt32(_bestScore.text));
+        else
+            PlayerPrefs.SetInt("BestScore", Convert.ToInt32(_bestScore.text));
     }
 
     public void SetScore(int score)
