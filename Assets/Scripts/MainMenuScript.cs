@@ -12,6 +12,7 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private Animator _mainMenuAnimator;
     [SerializeField] private Text _bestScore;
     [SerializeField] private Text _bestTimeLimitedScore;
+    [SerializeField] private GameObject _spawnerForSmoke;
     private String _theBestTimeLimitedScore = "BestTimeLimitedScore";
     private String _theBestScore = "BestScore";
     private String _animatorCheck = "isOpened";
@@ -24,7 +25,8 @@ public class MainMenuScript : MonoBehaviour
 
     public void OnGameWithATimeLimitButtonClick()
     {
-        OnPlayButtonClick();
+        _mainMenuAnimator.SetBool(_animatorCheck, false);
+        StartCoroutine(startGame());
         _time.SetActive(true);
         _gameOver.GetComponent<GameOver>()._isGameWithTimer = true;
         _player.GetComponent<AutoMove>().acceleration = 2.5f;
@@ -35,6 +37,7 @@ public class MainMenuScript : MonoBehaviour
     {
         _mainMenuAnimator.SetBool(_animatorCheck, false);
         StartCoroutine(startGame());
+        _spawnerForSmoke.SetActive(true);
         
     }
 

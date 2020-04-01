@@ -5,6 +5,7 @@ public class ConditionCollision : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
     [SerializeField] private GameOver gameOver;
+    [SerializeField] private SpawnerForSmoke _spavnerForSmoke;
     public int score = 0;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -15,7 +16,7 @@ public class ConditionCollision : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             else
                 transform.rotation = Quaternion.Euler(0, 0, 0);
-
+            _spavnerForSmoke.ChangeWall();
         }
         else if (collision.gameObject.GetComponent<CircleCollider2D>())
         {
