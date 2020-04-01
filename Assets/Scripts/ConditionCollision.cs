@@ -16,7 +16,8 @@ public class ConditionCollision : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             else
                 transform.rotation = Quaternion.Euler(0, 0, 0);
-            _spavnerForSmoke.ChangeWall();
+            if(!gameOver._isGameWithTimer)
+                _spavnerForSmoke.ChangeWall();
         }
         else if (collision.gameObject.GetComponent<CircleCollider2D>())
         {
