@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,11 +12,14 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private Animator _mainMenuAnimator;
     [SerializeField] private Text _bestScore;
     [SerializeField] private Text _bestTimeLimitedScore;
+    private String _theBestTimeLimitedScore = "BestTimeLimitedScore";
+    private String _theBestScore = "BestScore";
+    private String _animatorCheck = "isOpened";
 
     private void Start()
     {
-        _bestScore.text = PlayerPrefs.GetInt("BestScore").ToString();
-        _bestTimeLimitedScore.text = PlayerPrefs.GetInt("BestTimeLimitedScore").ToString();
+        _bestScore.text = PlayerPrefs.GetInt(_theBestScore).ToString();
+        _bestTimeLimitedScore.text = PlayerPrefs.GetInt(_theBestTimeLimitedScore).ToString();
     }
 
     public void OnGameWithATimeLimitButtonClick()
@@ -29,7 +33,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void OnPlayButtonClick()
     {
-        _mainMenuAnimator.SetBool("isOpened", false);
+        _mainMenuAnimator.SetBool(_animatorCheck, false);
         StartCoroutine(startGame());
         
     }

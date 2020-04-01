@@ -14,6 +14,9 @@ public class GameOver : MonoBehaviour
     [SerializeField] Animator _gameOverAnimator;
     [SerializeField] private Text _bestScore;
     public bool _isGameWithTimer = false;
+    private String _bestTimeLimitedScore = "BestTimeLimitedScore";
+    private String _theBestScore = "BestScore";
+    private String _animatorCheck = "isOpened";
 
     public void Show()
     {
@@ -22,17 +25,17 @@ public class GameOver : MonoBehaviour
         gameObject.SetActive(true);
 
         if (_isGameWithTimer)
-            _bestScore.text = PlayerPrefs.GetInt("BestTimeLimitedScore").ToString();
+            _bestScore.text = PlayerPrefs.GetInt(_bestTimeLimitedScore).ToString();
         else
-            _bestScore.text = PlayerPrefs.GetInt("BestScore").ToString();
+            _bestScore.text = PlayerPrefs.GetInt(_theBestScore).ToString();
         if (Convert.ToInt32(_finalScoreText.text) > Convert.ToInt32(_bestScore.text))
         {
             _bestScore.text = _finalScoreText.text;
+            if (_isGameWithTimer)
+                PlayerPrefs.SetInt(_bestTimeLimitedScore, Convert.ToInt32(_bestScore.text));
+            else
+                PlayerPrefs.SetInt(_theBestScore, Convert.ToInt32(_bestScore.text));
         }
-        if (_isGameWithTimer)
-            PlayerPrefs.SetInt("BestTimeLimitedScore", Convert.ToInt32(_bestScore.text));
-        else
-            PlayerPrefs.SetInt("BestScore", Convert.ToInt32(_bestScore.text));
     }
 
     public void SetScore(int score)
@@ -42,13 +45,13 @@ public class GameOver : MonoBehaviour
 
     public void OnRestartButtonClick()
     {
-        _gameOverAnimator.SetBool("isOpened", false);
+        _gameOverAnimator.SetBool(_animatorCheck, false);
         StartCoroutine(RestartButtonClick());
     }
 
     public void OnMainMenuButtonClick()
     {
-        _gameOverAnimator.SetBool("isOpened", false);
+        _gameOverAnimator.SetBool(_animatorCheck, false);
         StartCoroutine(MainMenutButtonClick());
     }
 
