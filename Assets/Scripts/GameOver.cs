@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 public class GameOver : MonoBehaviour
 {
@@ -64,11 +65,12 @@ public class GameOver : MonoBehaviour
         _player.GetComponent<ConditionCollision>().score = 0;
         _player.SetActive(true);
 
-        //Вы в прошлый раз говорили, что использование тэгов не очень хорошо. Но я пока не придумал, как сделать по-другому
-        GameObject[] flowers = GameObject.FindGameObjectsWithTag("Flower");
-
-        foreach (GameObject flower in flowers)
-            Destroy(flower);
+        foreach (GameObject flower in spawner.GetComponent<Spawner>().Flowers)
+        {
+            if(flower != null)
+                Destroy(flower);
+        }
+            
         gameObject.SetActive(false);
         if (_isGameWithTimer)
         {

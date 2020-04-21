@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour
     public float interval = 3;
     [SerializeField] private GameObject from;
     [SerializeField] private GameObject to;
+    public ArrayList Flowers = new ArrayList();
 
     private float timer;
 
@@ -22,6 +23,7 @@ public class Spawner : MonoBehaviour
         var position = new Vector2(Random.Range(from.transform.position.x,
             to.transform.position.x), Random.Range(from.transform.position.y,
             to.transform.position.y));
-        Instantiate(prefab, position, Quaternion.identity);
+        var flower = Instantiate(prefab, position, Quaternion.identity);
+        Flowers.Add(flower);
     }
 }
