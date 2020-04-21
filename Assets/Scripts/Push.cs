@@ -15,7 +15,15 @@ public class Push : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(keyCode))
+        //if (Input.touchCount > 0)
+        //{
+        //    Touch touch = Input.GetTouch(0);
+        //    if (touch.phase == TouchPhase.Began)
+        //    {
+        //        rigidBody2D.AddForce(Force, ForceMode2D.Impulse);
+        //    }
+        //}
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             rigidBody2D.AddForce(Force, ForceMode2D.Impulse);
         }

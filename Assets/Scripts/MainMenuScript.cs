@@ -29,7 +29,7 @@ public class MainMenuScript : MonoBehaviour
         StartCoroutine(startGame());
         _time.SetActive(true);
         _gameOver.GetComponent<GameOver>()._isGameWithTimer = true;
-        _player.GetComponent<AutoMove>().acceleration = 2.5f;
+        _player.GetComponent<AutoMove>().Acceleration = 2.5f;
         _spawner.GetComponent<Spawner>().interval = 0.5f;
     }
 

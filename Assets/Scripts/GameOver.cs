@@ -74,11 +74,11 @@ public class GameOver : MonoBehaviour
         {
             _time.SetActive(true);
             _time.GetComponent<TimerScript>()._timer = 3000;
-            _player.GetComponent<AutoMove>().acceleration = 2.5f;
+            _player.GetComponent<AutoMove>().Acceleration = 2.5f;
         }
         else
         {
-            _player.GetComponent<AutoMove>().acceleration = 1;
+            _player.GetComponent<AutoMove>().Acceleration = 1;
         }
     }
 
