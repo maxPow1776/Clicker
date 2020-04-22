@@ -65,10 +65,13 @@ public class GameOver : MonoBehaviour
         _player.GetComponent<ConditionCollision>().score = 0;
         _player.SetActive(true);
 
-        foreach (GameObject flower in spawner.GetComponent<Spawner>().Flowers)
+        if (spawner.GetComponent<Spawner>().Flowers != null)
         {
-            if(flower != null)
-                Destroy(flower);
+            foreach (GameObject flower in spawner.GetComponent<Spawner>().Flowers)
+            {
+                if (flower != null)
+                    Destroy(flower);
+            }
         }
             
         gameObject.SetActive(false);
@@ -80,7 +83,8 @@ public class GameOver : MonoBehaviour
         }
         else
         {
-            _player.GetComponent<AutoMove>().Acceleration = 1;
+            if(_player.GetComponent<AutoMove>() != null)
+                _player.GetComponent<AutoMove>().Acceleration = 1;
         }
     }
 
