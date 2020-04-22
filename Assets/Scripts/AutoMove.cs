@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
+using UnityEngine;
 
 public class AutoMove : MonoBehaviour
 {
@@ -8,7 +8,7 @@ public class AutoMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (transform.rotation.y == 0)
+        if (Math.Abs(transform.rotation.y) < 0.1)
             transform.position -= new Vector3(_speed.x, _speed.y, 0) * Time.deltaTime * Acceleration;
         else
             transform.position += new Vector3(_speed.x, _speed.y, 0) * Time.deltaTime * Acceleration;
