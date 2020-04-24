@@ -83,8 +83,9 @@ public class GameOver : MonoBehaviour
         }
         else
         {
-            if(_player.GetComponent<AutoMove>() != null)
-                _player.GetComponent<AutoMove>().Acceleration = 1;
+            var autoMove = _player.GetComponent<AutoMove>();
+            if (autoMove != null)
+                autoMove.Acceleration = 1;
         }
     }
 
