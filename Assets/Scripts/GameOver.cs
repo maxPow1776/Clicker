@@ -65,9 +65,10 @@ public class GameOver : MonoBehaviour
         _player.GetComponent<ConditionCollision>().score = 0;
         _player.SetActive(true);
 
-        if (spawner.GetComponent<Spawner>().Flowers != null)
+        var spawnerScript = spawner.GetComponent<Spawner>();
+        if (spawnerScript != null)
         {
-            foreach (GameObject flower in spawner.GetComponent<Spawner>().Flowers)
+            foreach (GameObject flower in spawnerScript.Flowers)
             {
                 if (flower != null)
                     Destroy(flower);
