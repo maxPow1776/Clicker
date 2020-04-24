@@ -28,12 +28,15 @@ public class MainMenuScript : MonoBehaviour
         _mainMenuAnimator.SetBool(_animatorCheck, false);
         StartCoroutine(startGame());
         _time.SetActive(true);
-        if(_gameOver.GetComponent<GameOver>() != null)
-            _gameOver.GetComponent<GameOver>()._isGameWithTimer = true;
-        if(_player.GetComponent<AutoMove>() != null)
-            _player.GetComponent<AutoMove>().Acceleration = 2.5f;
-        if(_spawner.GetComponent<Spawner>() != null)
-            _spawner.GetComponent<Spawner>().interval = 0.5f;
+        var gameOver = _gameOver.GetComponent<GameOver>();
+        var autoMove = _player.GetComponent<AutoMove>();
+        var spawner = _spawner.GetComponent<Spawner>();
+        if (gameOver != null)
+            gameOver._isGameWithTimer = true;
+        if(autoMove != null)
+            autoMove.Acceleration = 2.5f;
+        if(spawner != null)
+            spawner.interval = 0.5f;
     }
 
     public void OnPlayButtonClick()
